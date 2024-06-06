@@ -39,7 +39,7 @@ Date of Access: 29 May 2024
 
 namespace ST10251759_PROG6221_POE
 {//namespace begin
-    internal class Step
+    public class Step
     {//Step class begin
         //Get Set method of attribute Description in step class
         public string Description { get; set; }

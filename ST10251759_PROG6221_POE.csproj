@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Recipe.cs" />
     <Compile Include="Step.cs" />
     <Compile Include="UnitOfMeasurement.cs" />
     <Page Include="MainWindow.xaml">
