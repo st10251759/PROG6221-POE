@@ -15,14 +15,29 @@ using System.Windows.Shapes;
 
 namespace ST10251759_PROG6221_POE
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
+        private ManageRecepie manageRecipes;
+
+        // Parameterless constructor required by the XAML loader
         public MainWindow()
         {
             InitializeComponent();
+            this.manageRecipes = new ManageRecepie(); // Initialize ManageRecepie instance here
+        }
+
+        // Optional constructor to pass an existing ManageRecepie instance
+        public MainWindow(ManageRecepie manageRecipes)
+        {
+            InitializeComponent();
+            this.manageRecipes = manageRecipes;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            AddRecipe addRecipeWindow = new AddRecipe(manageRecipes);
+            addRecipeWindow.Show();
+            this.Close();
         }
     }
 }

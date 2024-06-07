@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddIngredients.xaml.cs">
+      <DependentUpon>AddIngredients.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddRecipe.xaml.cs">
       <DependentUpon>AddRecipe.xaml</DependentUpon>
     </Compile>
@@ -62,6 +65,10 @@
     <Compile Include="Recipe.cs" />
     <Compile Include="Step.cs" />
     <Compile Include="UnitOfMeasurement.cs" />
+    <Page Include="AddIngredients.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddRecipe.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -112,6 +119,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Simple Cooking Poster .png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="8bb387ee878eddeb23baea344d4e13af.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Green and Black Cooking Recipies Blog Facebook Cover %28Presentation%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

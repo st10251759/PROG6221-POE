@@ -11,7 +11,7 @@
         <Rectangle HorizontalAlignment="Center" Height="142" Margin="0,175,0,0" Stroke="Black" VerticalAlignment="Top" Width="497" Fill="#80000000"/>
         <Label Content=" M Y   R E C I P E   A P P" Margin="0,175,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Cascadia Mono ExtraLight" Width="290" FontSize="18" FontStretch="UltraExpanded" HorizontalAlignment="Center"/>
         <Label Content="Welcome" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Impact" FontSize="72" Foreground="#FFE25613" Margin="0,190,0,0"/>
-        <Button Content="LETS GET STARTED &gt;" HorizontalAlignment="Center" Margin="0,282,0,0" VerticalAlignment="Top" Width="174" Height="28" BorderBrush="#FFE25613" Foreground="#FFE25613" Background="White" FontFamily="Bahnschrift SemiCondensed" FontSize="20" BorderThickness="4,1,0,4" SnapsToDevicePixels="True">
+        <Button Content="LETS GET STARTED &gt;" HorizontalAlignment="Center" Margin="0,282,0,0" VerticalAlignment="Top" Width="174" Height="28" BorderBrush="#FFE25613" Foreground="#FFE25613" Background="White" FontFamily="Bahnschrift SemiCondensed" FontSize="20" BorderThickness="4,1,0,4" SnapsToDevicePixels="True" Click="Button_Click">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>

@@ -12,12 +12,12 @@
             <StackPanel Width="797" RenderTransformOrigin="0.493,0.444">
                 <Label Content="Add a New Recipe:" Width="299" Foreground="#FFEA5905" FontFamily="Bahnschrift Condensed" FontSize="48"/>
                 <Label Content="Enter the name of your recipe:" Width="372" FontFamily="Bahnschrift Condensed" FontSize="36" Foreground="White" HorizontalAlignment="Left" Margin="10,0,0,0"/>
-                <TextBox TextWrapping="Wrap" Width="764" Height="37" BorderBrush="#FFEA5905" IsUndoEnabled="False" FontFamily="Bahnschrift Condensed" FontSize="26" HorizontalAlignment="Left" Margin="15,0,0,0" TextChanged="TextBox_TextChanged" />
+                <TextBox x:Name="RecipeNameTextBox" TextWrapping="Wrap" Width="764" Height="37" BorderBrush="#FFEA5905" IsUndoEnabled="False" FontFamily="Bahnschrift Condensed" FontSize="26" HorizontalAlignment="Left" Margin="15,0,0,0" TextChanged="TextBox_TextChanged" />
                 <Label Content="Please enter the number of ingredients in the recipe: " Width="646" FontFamily="Bahnschrift Condensed" FontSize="36" Foreground="White" HorizontalAlignment="Left" Margin="10,10,0,0"/>
                 <TextBox x:Name="NumIngredientstxt" Height="40" Width="99" Margin="0,-56,-655,0" FontSize="26" BorderBrush="#FFEA5905" FontFamily="Bahnschrift Condensed"></TextBox>
                 <Label Content="Please enter the number of steps in the recipe: " Width="646" FontFamily="Bahnschrift Condensed" FontSize="36" Foreground="White" HorizontalAlignment="Left" Margin="10,10,0,0"/>
                 <TextBox x:Name="NumStepstxt" Height="40" Width="99" Margin="0,-56,-655,0" FontSize="26" BorderBrush="#FFEA5905" FontFamily="Bahnschrift Condensed"></TextBox>
-                <Button x:Name="btnAddRecipe" Height="50" Width="200" Content="Add Recipe" FontSize="36" Background="#FFEA5905" Foreground="White " Margin="550,25,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" BorderBrush="White" BorderThickness="2,2,2,2" FontFamily="Bahnschrift Condensed"/>
+                <Button x:Name="btnAddRecipe" Height="50" Width="200" Content="Add Recipe" FontSize="36" Background="#FFEA5905" Foreground="White " Margin="550,25,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" BorderBrush="White" BorderThickness="2,2,2,2" FontFamily="Bahnschrift Condensed" Click="btnAddRecipe_Click"/>
             </StackPanel>
             
 
