@@ -59,19 +59,19 @@ namespace ST10251759_PROG6221_POE
             //this.Hide();
         }
 
-        private void ViewRecipeButton_Click(object sender, RoutedEventArgs e)
+        private void ViewRecipeButton_Click_1(object sender, RoutedEventArgs e)
         {
-            //selection = lbxRecipes.SelectedIndex;
-            //if (selection < 0)
-            //{
-            //    MessageBox.Show("Please select a recipe to view.");
-            //    return;
-            //}
+            selection = lbxRecipes.SelectedIndex;
+            if (selection < 0)
+            {
+                MessageBox.Show("Please select a recipe to view.");
+                return;
+            }
 
-            //var selectedRecipe = recipes[selection];
-            //var viewRecipeWindow = new ViewRecipe(selectedRecipe);
-            //viewRecipeWindow.Show();
-            //this.Hide();
+            var selectedRecipe = recipes[selection];
+            var viewRecipeWindow = new ViewRecipe(selectedRecipe);
+            viewRecipeWindow.Show();
+            this.Hide();
         }
     }
 }
