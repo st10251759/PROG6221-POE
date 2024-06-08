@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ST10251759_PROG6221_POE
 {
+    public delegate void RecipeDelegate(string message);
     public class Recipe
     {
         public string Name { get; set; }
@@ -14,10 +15,14 @@ namespace ST10251759_PROG6221_POE
         public List<Ingredient> Ingredients { get; set; }
         public List<Step> Steps { get; set; }
 
+        private double totalCalories;
+        private StringBuilder calorieMessages;
+
         public Recipe()
         {
             Ingredients = new List<Ingredient>();
             Steps = new List<Step>();
+            calorieMessages = new StringBuilder();
         }
 
         public Recipe(string name, int numIngredients, int numSteps)
@@ -27,6 +32,7 @@ namespace ST10251759_PROG6221_POE
             NumSteps = numSteps;
             Ingredients = new List<Ingredient>();
             Steps = new List<Step>();
+            calorieMessages = new StringBuilder();
         }
 
         public void AddIngredient(Ingredient ingredient)
@@ -59,6 +65,63 @@ namespace ST10251759_PROG6221_POE
             return totalCalories;
         }
 
+        private void DisplayCalorieMessage(string message)
+        {
+            calorieMessages.AppendLine(message);
+        }
+
+        public string DisplayRecipe()
+        {
+            calorieMessages.Clear();
+            RecipeDelegate recipeDelegate = new RecipeDelegate(DisplayCalorieMessage);
+
+            string recipeDetails = $"Recipe: {Name}\n";
+            recipeDetails += "Ingredients:\n";
+            foreach (var ingredient in Ingredients)
+            {
+                recipeDetails += $"- {ingredient.Quantity} {ingredient.Unit} of {ingredient.Name} ({ingredient.calories} calories)\n";
+            }
+            recipeDetails += "Steps:\n";
+            for (int i = 0; i < Steps.Count; i++)
+            {
+                recipeDetails += $"{i + 1}. {Steps[i].Description}\n";
+            }
+            //recipeDetails += $"Total Calories: {CalculateTotalCalories()}\n";
+
+            DisplayCalories(recipeDelegate);
+            recipeDetails += calorieMessages.ToString();
+            return recipeDetails;
+        }
+
+        private void DisplayCalories(RecipeDelegate recipeDelegate)
+        {
+
+            totalCalories = CalculateTotalCalories();
+            recipeDelegate($"Total number of calories in recipe: {totalCalories}");
+
+            if (totalCalories > 300)
+            {
+                recipeDelegate("CALORIES EXCEED 300");
+            }
+
+            if (totalCalories > 0 && totalCalories <= 200)
+            {
+                recipeDelegate("This amount of calories is enough to satisfy you without interfering with appetite and is a good SNACK");
+            }
+            else if (totalCalories > 200 && totalCalories <= 400)
+            {
+                recipeDelegate("This amount of calories serves as a LOW CALORIE MEAL, aiding in weight loss");
+            }
+            else if (totalCalories > 400 && totalCalories <= 700)
+            {
+                recipeDelegate("This amount of calories is suitable for an AVERAGE MEAL ");
+            }
+            else if (totalCalories > 700)
+            {
+                recipeDelegate("This meal is considered a HIGH CALORIE MEAL, containing a large amount of calories, and should not be consumed frequently");
+            }
+        }
+
         public void ScaleRecipe(double factor)
         {
             foreach (var ingredient in Ingredients)
@@ -76,21 +139,21 @@ namespace ST10251759_PROG6221_POE
             Steps.Clear();
         }
 
-        public string DisplayRecipe()
-        {
-            string recipeDetails = $"Recipe: {Name}\n";
-            recipeDetails += "Ingredients:\n";
-            foreach (var ingredient in Ingredients)
-            {
-                recipeDetails += $"- {ingredient.Quantity} {ingredient.Unit} of {ingredient.Name} ({ingredient.calories} calories)\n";
-            }
-            recipeDetails += "Steps:\n";
-            for (int i = 0; i < Steps.Count; i++)
-            {
-                recipeDetails += $"{i + 1}. {Steps[i].Description}\n";
-            }
-            recipeDetails += $"Total Calories: {CalculateTotalCalories()}\n";
-            return recipeDetails;
-        }
+        //public string DisplayRecipe()
+        //{
+        //    string recipeDetails = $"Recipe: {Name}\n";
+        //    recipeDetails += "Ingredients:\n";
+        //    foreach (var ingredient in Ingredients)
+        //    {
+        //        recipeDetails += $"- {ingredient.Quantity} {ingredient.Unit} of {ingredient.Name} ({ingredient.calories} calories)\n";
+        //    }
+        //    recipeDetails += "Steps:\n";
+        //    for (int i = 0; i < Steps.Count; i++)
+        //    {
+        //        recipeDetails += $"{i + 1}. {Steps[i].Description}\n";
+        //    }
+        //    recipeDetails += $"Total Calories: {CalculateTotalCalories()}\n";
+        //    return recipeDetails;
+        //}
     }
 }

@@ -61,7 +61,7 @@ namespace ST10251759_PROG6221_POE
 
         private void ViewRecipeButton_Click_1(object sender, RoutedEventArgs e)
         {
-            selection = lbxRecipes.SelectedIndex;
+            int selection = lbxRecipes.SelectedIndex;
             if (selection < 0)
             {
                 MessageBox.Show("Please select a recipe to view.");
@@ -69,7 +69,7 @@ namespace ST10251759_PROG6221_POE
             }
 
             var selectedRecipe = recipes[selection];
-            var viewRecipeWindow = new ViewRecipe(selectedRecipe);
+            var viewRecipeWindow = new ViewRecipe(selectedRecipe, manageRecipe);
             viewRecipeWindow.Show();
             this.Hide();
         }

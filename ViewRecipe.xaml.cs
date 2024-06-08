@@ -20,12 +20,14 @@ namespace ST10251759_PROG6221_POE
     public partial class ViewRecipe : Window
     {
         private Recipe recipe;
+        private ManageRecepie manageRecipe;
 
-        public ViewRecipe(Recipe selectedRecipe)
+        public ViewRecipe(Recipe selectedRecipe, ManageRecepie manageRecipe)
         {
             InitializeComponent();
             recipe = selectedRecipe;
             DisplayRecipeDetails();
+            this.manageRecipe = manageRecipe;
         }
 
         private void DisplayRecipeDetails()
@@ -33,5 +35,12 @@ namespace ST10251759_PROG6221_POE
             txtRecipeDetails.Text = recipe.DisplayRecipe();
         }
 
+        private void MainMenuButton_Click(object sender, RoutedEventArgs e)
+        {
+            var AllRecipes = new AllRecipes(manageRecipe);
+            AllRecipes.Show();
+            this.Close();
+
+        }
     }
 }
