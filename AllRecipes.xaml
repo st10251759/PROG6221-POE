@@ -14,7 +14,7 @@
         <Button x:Name="AddRecipeButton" Content="Add Recipe" HorizontalAlignment="Left" Margin="60,129,0,0" VerticalAlignment="Top" Height="45" Width="174" Background="#FFEA5905" BorderBrush="White" Foreground="White" FontFamily="Bahnschrift Condensed" FontSize="36" Click="AddRecipeButton_Click"/>
         <Button x:Name="FilterRecipeButton" Content="Filter Recipes" HorizontalAlignment="Left" Margin="60,227,0,0" VerticalAlignment="Top" Height="45" Width="174" Background="#FFEA5905" BorderBrush="White" Foreground="White" FontFamily="Bahnschrift Condensed" FontSize="36"/>
         <Button x:Name="ViewRecipeButton" Content="View Recipe" HorizontalAlignment="Left" Margin="60,326,0,0" VerticalAlignment="Top" Height="45" Width="174" Background="#FFEA5905" BorderBrush="White" Foreground="White" FontFamily="Bahnschrift Condensed" FontSize="36" Click="ViewRecipeButton_Click_1"/>
-        <Button x:Name="ExitButton" Content="Exit" HorizontalAlignment="Left" Margin="60,420,0,0" VerticalAlignment="Top" Height="45" Width="174" Background="#FFEA5905" BorderBrush="White" Foreground="White" FontFamily="Bahnschrift Condensed" FontSize="36"/>
+        <Button x:Name="ExitButton" Content="Exit" HorizontalAlignment="Left" Margin="60,420,0,0" VerticalAlignment="Top" Height="45" Width="174" Background="#FFEA5905" BorderBrush="White" Foreground="White" FontFamily="Bahnschrift Condensed" FontSize="36" Click="ExitButton_Click_1"/>
         <ListBox x:Name="lbxRecipes" Margin="323,111,42,42" Background="Black" Foreground="#FFEA6A10" FontFamily="Bahnschrift SemiLight SemiCondensed" FontSize="22" BorderBrush="#FFEA6A10"/>
 
 

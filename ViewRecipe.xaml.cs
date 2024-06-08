@@ -70,5 +70,29 @@ namespace ST10251759_PROG6221_POE
                 MessageBox.Show("Please select a scaling factor.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+        private void ResetRecipeButton_Click(object sender, RoutedEventArgs e)
+        {
+            manageRecipe.ResetRecipe(currentRecipe);
+            txtRecipeDetails.Text = currentRecipe.DisplayRecipe();
+        }
+
+        private void ClearRecipeButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this recipe?", "Delete Recipe", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (result == MessageBoxResult.Yes)
+            {
+                manageRecipe.DeleteRecipe(currentRecipe);
+                OpenAllRecipesWindow();
+            }
+        }
+
+        private void OpenAllRecipesWindow()
+        {
+            AllRecipes allRecipesWindow = new AllRecipes(manageRecipe);
+            allRecipesWindow.Show();
+            this.Close();
+        }
+
     }
 }
