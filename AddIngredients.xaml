@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ST10251759_PROG6221_POE"
         mc:Ignorable="d"
-        Title="AddIngredients" Height="495" Width="955">
+        Title="AddIngredients" Height="512" Width="955">
     <Grid>
-        <Image HorizontalAlignment="Center" Height="481" VerticalAlignment="Center" Width="955" Source="/Green and Black Cooking Recipies Blog Facebook Cover (Presentation).png" Stretch="UniformToFill"/>
-        <DockPanel LastChildFill="False" Background="#C1000000" Margin="35,10,35,10">
+        <Image HorizontalAlignment="Center" Height="499" VerticalAlignment="Center" Width="955" Source="/Green and Black Cooking Recipies Blog Facebook Cover (Presentation).png" Stretch="UniformToFill"/>
+        <DockPanel LastChildFill="False" Background="#C1000000" Margin="35,10,35,0" Height="454" VerticalAlignment="Top">
             <StackPanel Width="885" RenderTransformOrigin="0.493,0.444">
-                <Label Content="Add an Ingredient:" Width="299" Foreground="#FFEA5905" FontFamily="Bahnschrift Condensed" FontSize="48"/>
+                <Label x:Name="AddIngredientLabel" Content="Add an Ingredient:" Width="401" Foreground="#FFEA5905" FontFamily="Bahnschrift Condensed" FontSize="48"/>
                 <Label Content="Enter the name of ingredient:" Width="372" FontFamily="Bahnschrift Condensed" FontSize="36" Foreground="White" HorizontalAlignment="Left" Margin="10,0,0,0"/>
                 <TextBox x:Name="IngredientNameTextBox" TextWrapping="Wrap" Width="478" Height="37" BorderBrush="#FFEA5905" IsUndoEnabled="False" FontFamily="Bahnschrift Condensed" FontSize="26" Margin="0,-56,-363,0"/>
                 <Label Content="Please enter the quantity of this ingredient: " Width="646" FontFamily="Bahnschrift Condensed" FontSize="36" Foreground="White" HorizontalAlignment="Left" Margin="10,10,0,0"/>
@@ -21,7 +21,7 @@
                 <TextBox x:Name="NumCaloriestxt" Height="40" Width="99" Margin="0,-56,-735,0" FontSize="26" BorderBrush="#FFEA5905" FontFamily="Bahnschrift Condensed"></TextBox>
                 <Label Content="Please select the Food Group: " Width="646" FontFamily="Bahnschrift Condensed" FontSize="36" Foreground="White" HorizontalAlignment="Left" Margin="10,10,0,0"/>
                 <ComboBox x:Name="foodGroupComboBox"  Height="35" Width="350" Margin="482,-49,0,0" Background="White" Foreground="Black"  BorderBrush="#FFEA5905" FontFamily="Bahnschrift Light SemiCondensed" FontSize="26"></ComboBox>
-                <Button x:Name="btnAddIngredient" Height="50" Width="200" Content="Add Ingredient" FontSize="36" Background="#FFEA5905" Foreground="White " Margin="638,25,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" BorderBrush="White" BorderThickness="2,2,2,2" FontFamily="Bahnschrift Condensed" Click="btnAddIngredient_Click"/>
+                <Button x:Name="btnAddIngredient" Height="50" Width="200" Content="Add Ingredient" FontSize="36" Background="#FFEA5905" Foreground="White " Margin="638,10,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" BorderBrush="White" BorderThickness="2,2,2,2" FontFamily="Bahnschrift Condensed" Click="btnAddIngredient_Click"/>
             </StackPanel>
         </DockPanel>
     </Grid>

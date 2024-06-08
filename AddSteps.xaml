@@ -1,0 +1,22 @@
+﻿<Window x:Class="ST10251759_PROG6221_POE.AddSteps"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ST10251759_PROG6221_POE"
+        mc:Ignorable="d"
+        Title="AddSteps" Height="356" Width="714">
+    <Grid>
+        <Image HorizontalAlignment="Center" Height="340" VerticalAlignment="Center" Width="714" Source="/Green and Black Cooking Recipies Blog Facebook Cover (Presentation).png" Stretch="UniformToFill"/>
+        <DockPanel LastChildFill="False" Margin="30,30,30,19" Background="#B2000000">
+            <StackPanel Width="653">
+                <Label x:Name="AddStepLabel" Content="Add a Step:" Width="260" Foreground="#FFEA5905" FontFamily="Bahnschrift Condensed" FontSize="48"/>
+                <TextBox x:Name="StepDescriptiontxt" TextWrapping="Wrap" Width="612" Height="141" FontFamily="Bahnschrift Condensed" FontSize="26" BorderBrush="#FFED6709"/>
+                <Button x:Name="btnAddStep" Content="Add Step" Width="191" Height="39" Click="btnAddStep_Click_1" Background="#FFEA5905" BorderBrush="White" Foreground="White" FontFamily="Bahnschrift Condensed" FontSize="26" Margin="418,17,0,0"/>
+            </StackPanel>
+            
+
+
+        </DockPanel>
+    </Grid>
+</Window>

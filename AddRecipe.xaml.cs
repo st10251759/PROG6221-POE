@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 
 namespace ST10251759_PROG6221_POE
 {
@@ -55,16 +56,21 @@ namespace ST10251759_PROG6221_POE
 
             // Create the recipe object
             Recipe recipe = new Recipe(recipeName, numIngredients, numSteps);
+            var addIngredientsWindow = new AddIngredients(recipe, numIngredients);
+            addIngredientsWindow.Show();
+            this.Close();
 
-            // Open a new window to enter ingredients and steps
-            var addIngredients = new AddIngredients(recipe);
-            if (addIngredients.ShowDialog() == true)
-            {
-                // Add the recipe to the manageRecipes collection if user successfully entered ingredients and steps
-                manageRecipes.AddRecipe(recipe);
-                MessageBox.Show("Recipe added successfully!");
-                this.Close();
-            }
+            //var addStepsWindow = new AddSteps(recipe, numSteps);
+            //addStepsWindow.Show();
+
+            manageRecipes.AddRecipe(recipe);
+
+            
+
+            // Reset the fields for the next recipe
+            RecipeNameTextBox.Clear();
+            NumIngredientstxt.Clear();
+            NumStepstxt.Clear();
         }
     }
 }
