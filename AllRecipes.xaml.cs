@@ -49,12 +49,6 @@ namespace ST10251759_PROG6221_POE
         }
 
 
-        private void FilterRecipeButton_Click(object sender, RoutedEventArgs e)
-        {
-            //var filterWindow = new Filter(manageRecipe);
-            //filterWindow.Show();
-            //this.Hide();
-        }
 
         private void ViewRecipeButton_Click_1(object sender, RoutedEventArgs e)
         {
@@ -74,6 +68,13 @@ namespace ST10251759_PROG6221_POE
         private void ExitButton_Click_1(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void FilterRecipeButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            var filterWindow = new Filter(manageRecipe);
+            filterWindow.Show();
+            this.Hide();
         }
     }
 }
