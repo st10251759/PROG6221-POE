@@ -86,7 +86,7 @@ namespace ST10251759_PROG6221_POE
             {
                 recipeDetails += $"{i + 1}. {Steps[i].Description}\n";
             }
-            //recipeDetails += $"Total Calories: {CalculateTotalCalories()}\n";
+            
 
             DisplayCalories(recipeDelegate);
             recipeDetails += calorieMessages.ToString();
@@ -97,7 +97,7 @@ namespace ST10251759_PROG6221_POE
         {
 
             totalCalories = CalculateTotalCalories();
-            recipeDelegate($"Total number of calories in recipe: {totalCalories}");
+            recipeDelegate($"\nTotal number of calories in recipe: {totalCalories}\n");
 
             if (totalCalories > 300)
             {
@@ -126,7 +126,112 @@ namespace ST10251759_PROG6221_POE
         {
             foreach (var ingredient in Ingredients)
             {
-                ingredient.Quantity *= factor;
+                double scaledQuantity = ingredient.Quantity * factor;
+                ingredient.CalculateScaledCalories(factor);
+
+                switch (ingredient.Unit)
+                {
+                    case UnitOfMeasurement.CUP:
+                    case UnitOfMeasurement.CUPS:
+                        ConvertCups(ingredient, scaledQuantity);
+                        break;
+                    case UnitOfMeasurement.TABLESPOON:
+                    case UnitOfMeasurement.TABLESPOONS:
+                        ConvertTablespoons(ingredient, scaledQuantity);
+                        break;
+                    case UnitOfMeasurement.TEASPOON:
+                    case UnitOfMeasurement.TEASPOONS:
+                        ConvertTeaspoons(ingredient, scaledQuantity);
+                        break;
+                    default:
+                        ingredient.Quantity = scaledQuantity;
+                        break;
+                }
+            }
+        }
+
+        private void ConvertCups(Ingredient ingredient, double newQuantity)
+        {
+            if (newQuantity < 1)
+            {
+                double tablespoons = newQuantity * 16;
+                ingredient.Quantity = tablespoons;
+                ingredient.Unit = UnitOfMeasurement.TABLESPOONS;
+            }
+            else if (newQuantity == 1)
+            {
+                ingredient.Quantity = newQuantity;
+                ingredient.Unit = UnitOfMeasurement.CUP;
+            }
+            else
+            {
+                ingredient.Quantity = newQuantity;
+                ingredient.Unit = UnitOfMeasurement.CUPS;
+            }
+        }
+
+        private void ConvertTablespoons(Ingredient ingredient, double newQuantity)
+        {
+            if (newQuantity >= 16)
+            {
+                if (newQuantity == 16)
+                {
+                    ingredient.Quantity = 1;
+                    ingredient.Unit = UnitOfMeasurement.CUP;
+                }
+                else
+                {
+                    double cups = newQuantity / 16;
+                    ingredient.Quantity = cups;
+                    ingredient.Unit = UnitOfMeasurement.CUPS;
+                }
+            }
+            else if (newQuantity < 1)
+            {
+                double teaspoons = newQuantity * 3;
+                ingredient.Quantity = teaspoons;
+                ingredient.Unit = UnitOfMeasurement.TEASPOONS;
+            }
+            else
+            {
+                if (newQuantity == 1)
+                {
+                    ingredient.Quantity = 1;
+                    ingredient.Unit = UnitOfMeasurement.TABLESPOON;
+                }
+                else
+                {
+                    ingredient.Quantity = newQuantity;
+                    ingredient.Unit = UnitOfMeasurement.TABLESPOONS;
+                }
+            }
+        }
+
+        private void ConvertTeaspoons(Ingredient ingredient, double newQuantity)
+        {
+            if (newQuantity >= 3)
+            {
+                if (newQuantity == 3)
+                {
+                    ingredient.Quantity = 1;
+                    ingredient.Unit = UnitOfMeasurement.TABLESPOON;
+                }
+                else
+                {
+                    double tablespoons = newQuantity / 3;
+                    ingredient.Quantity = tablespoons;
+                    ingredient.Unit = UnitOfMeasurement.TABLESPOONS;
+                }
+            }
+            else if (newQuantity <= 1)
+            {
+                ingredient.Quantity = newQuantity;
+                ingredient.Unit = UnitOfMeasurement.TEASPOON;
+            }
+            else
+            {
+                ingredient.Quantity = newQuantity;
+                ingredient.Unit = UnitOfMeasurement.TEASPOONS;
             }
         }
 
@@ -134,26 +239,12 @@ namespace ST10251759_PROG6221_POE
         {
             foreach (var ingredient in Ingredients)
             {
-                ingredient.Quantity = 0;
+                ingredient.Quantity = ingredient.OriginalQuantity;
+                ingredient.Unit = ingredient.OriginalUnit;
+                ingredient.calories = ingredient.originalCalories;
             }
-            Steps.Clear();
-        }
 
-        //public string DisplayRecipe()
-        //{
-        //    string recipeDetails = $"Recipe: {Name}\n";
-        //    recipeDetails += "Ingredients:\n";
-        //    foreach (var ingredient in Ingredients)
-        //    {
-        //        recipeDetails += $"- {ingredient.Quantity} {ingredient.Unit} of {ingredient.Name} ({ingredient.calories} calories)\n";
-        //    }
-        //    recipeDetails += "Steps:\n";
-        //    for (int i = 0; i < Steps.Count; i++)
-        //    {
-        //        recipeDetails += $"{i + 1}. {Steps[i].Description}\n";
-        //    }
-        //    recipeDetails += $"Total Calories: {CalculateTotalCalories()}\n";
-        //    return recipeDetails;
-        //}
+            totalCalories = CalculateTotalCalories();
+        }
     }
 }

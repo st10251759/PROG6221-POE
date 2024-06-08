@@ -19,20 +19,20 @@ namespace ST10251759_PROG6221_POE
     /// </summary>
     public partial class ViewRecipe : Window
     {
-        private Recipe recipe;
+        private Recipe currentRecipe;
         private ManageRecepie manageRecipe;
 
-        public ViewRecipe(Recipe selectedRecipe, ManageRecepie manageRecipe)
+        public ViewRecipe(Recipe recipe, ManageRecepie manageRecipe)
         {
             InitializeComponent();
-            recipe = selectedRecipe;
+            this.currentRecipe = recipe;
             DisplayRecipeDetails();
             this.manageRecipe = manageRecipe;
         }
 
         private void DisplayRecipeDetails()
         {
-            txtRecipeDetails.Text = recipe.DisplayRecipe();
+            txtRecipeDetails.Text = currentRecipe.DisplayRecipe();
         }
 
         private void MainMenuButton_Click(object sender, RoutedEventArgs e)
@@ -41,6 +41,34 @@ namespace ST10251759_PROG6221_POE
             AllRecipes.Show();
             this.Close();
 
+        }
+
+        private void ScalingRecipeButton_Click(object sender, RoutedEventArgs e)
+        {
+            lblScalingFactor.Visibility = Visibility.Visible;
+            FactorComboBox.Visibility = Visibility.Visible;
+            ProccedButton.Visibility = Visibility.Visible;
+        }
+
+        private void ProccedButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (FactorComboBox.SelectedItem != null)
+            {
+                ComboBoxItem selectedItem = (ComboBoxItem)FactorComboBox.SelectedItem;
+                double factor = Convert.ToDouble(selectedItem.Content);
+                manageRecipe.ScaleRecipe(currentRecipe, factor);
+                txtRecipeDetails.Text = currentRecipe.DisplayRecipe();
+
+                //Hide the Scaling Components
+                lblScalingFactor.Visibility = Visibility.Hidden;
+                FactorComboBox.SelectedIndex = -1;
+                FactorComboBox.Visibility = Visibility.Hidden;
+                ProccedButton.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                MessageBox.Show("Please select a scaling factor.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }
