@@ -20,6 +20,7 @@ namespace ST10251759_PROG6221_POE
     public partial class AddIngredients : Window
     {
         private Recipe recipe;
+        ManageRecepie manageRecipe;
 
         List<UnitOfMeasurement> units = new List<UnitOfMeasurement>();
         // list to store units in enum
@@ -29,13 +30,15 @@ namespace ST10251759_PROG6221_POE
         private int numIngredients;
         private int currentIngredientIndex = 0;
 
-        public AddIngredients(Recipe recipe, int numIngredients)
+        public AddIngredients(Recipe recipe, int numIngredients, ManageRecepie manageRecipe)
         {
             InitializeComponent();
             this.recipe = recipe; 
             this.numIngredients = numIngredients;
             UpdateIngredientLabel();
             PopulateComboBoxes();
+            this.manageRecipe = manageRecipe;
+
         }
 
         private void PopulateComboBoxes()
@@ -123,7 +126,7 @@ namespace ST10251759_PROG6221_POE
                 this.Close();
 
                 // Open the AddSteps window
-                var addStepsWindow = new AddSteps(recipe, recipe.NumSteps);
+                var addStepsWindow = new AddSteps(recipe, recipe.NumSteps, manageRecipe);
                 addStepsWindow.Show();
             }
 

@@ -56,7 +56,7 @@ namespace ST10251759_PROG6221_POE
 
             // Create the recipe object
             Recipe recipe = new Recipe(recipeName, numIngredients, numSteps);
-            var addIngredientsWindow = new AddIngredients(recipe, numIngredients);
+            var addIngredientsWindow = new AddIngredients(recipe, numIngredients, manageRecipes);
             addIngredientsWindow.Show();
             this.Close();
 

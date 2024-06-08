@@ -22,32 +22,15 @@ namespace ST10251759_PROG6221_POE
         private Recipe recipe;
         private int numSteps;
         private int currentStepIndex = 0;
-        public AddSteps(Recipe recipe, int numSteps)
+        ManageRecepie manageRecipe;
+        public AddSteps(Recipe recipe, int numSteps, ManageRecepie manageRecipe)
         {
             InitializeComponent();
             this.recipe = recipe;
             this.numSteps = numSteps;
             UpdateStepLabel();
+            this.manageRecipe = manageRecipe;
         }
-
-        //private void btnAddStep_Click(object sender, RoutedEventArgs e)
-        //{
-        //    string description = StepDescriptiontxt.Text;
-        //    if (string.IsNullOrWhiteSpace(description))
-        //    {
-        //        MessageBox.Show("Step description cannot be empty.");
-        //        return;
-        //    }
-
-        //    recipe.Steps.Add(new Step { Description = description });
-
-        //    // Show success confirmation
-        //    var successWindow = new SuccessWindow("Step added successfully!");
-        //    successWindow.ShowDialog();
-
-        //    // Reset the field for the next step
-        //    StepDescriptiontxt.Text = "";
-        //}
 
         private void btnAddStep_Click_1(object sender, RoutedEventArgs e)
         {
@@ -77,6 +60,11 @@ namespace ST10251759_PROG6221_POE
 
                 var successWindow2 =new SuccessWindow("Recipe added successfully!");
                 successWindow2.Show();
+
+                var AllRecipes = new AllRecipes(manageRecipe);
+                AllRecipes.Show();
+                
+
             }
         }
 
