@@ -20,21 +20,22 @@ namespace ST10251759_PROG6221_POE
     public partial class AllRecipes : Window
     {
         private ManageRecepie manageRecipe;
-        private List<Recipe> recipes;
+        private List<Recipe> sortedRecipes;
         private int selection;
 
         public AllRecipes(ManageRecepie manageRecipe)
         {
             InitializeComponent();
             this.manageRecipe = manageRecipe;
-            this.recipes = manageRecipe.Recipes;
+            //this.recipes = manageRecipe.Recipes;
             LoadRecipes();
         }
 
         private void LoadRecipes()
         {
             lbxRecipes.Items.Clear();
-            foreach (var recipe in recipes.OrderBy(r => r.Name))
+            sortedRecipes = manageRecipe.Recipes.OrderBy(r => r.Name).ToList();
+            foreach (var recipe in sortedRecipes)
             {
                 lbxRecipes.Items.Add($"{recipe.Name}\n{recipe.CalculateTotalCalories()} total calories");
             }
@@ -64,7 +65,7 @@ namespace ST10251759_PROG6221_POE
                 return;
             }
 
-            var selectedRecipe = recipes[selection];
+            var selectedRecipe = sortedRecipes[selection];
             var viewRecipeWindow = new ViewRecipe(selectedRecipe, manageRecipe);
             viewRecipeWindow.Show();
             this.Hide();
