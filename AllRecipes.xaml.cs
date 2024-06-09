@@ -35,10 +35,19 @@ namespace ST10251759_PROG6221_POE
         {
             lbxRecipes.Items.Clear();
             sortedRecipes = manageRecipe.Recipes.OrderBy(r => r.Name).ToList();
-            foreach (var recipe in sortedRecipes)
+
+            if (sortedRecipes.Count == 0)
             {
-                lbxRecipes.Items.Add($"{recipe.Name}\n{recipe.CalculateTotalCalories()} total calories");
+                lbxRecipes.Items.Add("No recipes available.");
             }
+            else
+            {
+                foreach (var recipe in sortedRecipes)
+                {
+                    lbxRecipes.Items.Add($"{recipe.Name}\n{recipe.CalculateTotalCalories()} total calories");
+                }
+            }
+
         }
 
         private void AddRecipeButton_Click(object sender, RoutedEventArgs e)
@@ -53,7 +62,8 @@ namespace ST10251759_PROG6221_POE
         private void ViewRecipeButton_Click_1(object sender, RoutedEventArgs e)
         {
             int selection = lbxRecipes.SelectedIndex;
-            if (selection < 0)
+
+            if (selection < 0 || sortedRecipes.Count == 0)
             {
                 MessageBox.Show("Please select a recipe to view.");
                 return;
@@ -67,7 +77,11 @@ namespace ST10251759_PROG6221_POE
 
         private void ExitButton_Click_1(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show("Exiting Application! Thank You for using My Recipe App");
+
             this.Close();
+
+            Application.Current.Shutdown();
         }
 
         private void FilterRecipeButton_Click_1(object sender, RoutedEventArgs e)
