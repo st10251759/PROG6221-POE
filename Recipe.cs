@@ -76,17 +76,18 @@ namespace ST10251759_PROG6221_POE
             RecipeDelegate recipeDelegate = new RecipeDelegate(DisplayCalorieMessage);
 
             string recipeDetails = $"Recipe: {Name}\n";
-            recipeDetails += "Ingredients:\n";
+            recipeDetails += "=============Ingredients:=============\n";
             foreach (var ingredient in Ingredients)
             {
-                recipeDetails += $"- {ingredient.Quantity} {ingredient.Unit} of {ingredient.Name} ({ingredient.calories} calories)\n";
+                recipeDetails += $"- {ingredient.Quantity} {ingredient.Unit} of {ingredient.Name} ({ingredient.calories} calories)\nFood Group: {ingredient.FoodGroup}\n";
             }
-            recipeDetails += "Steps:\n";
+            recipeDetails += "=============Steps:=============\n";
             for (int i = 0; i < Steps.Count; i++)
             {
-                recipeDetails += $"{i + 1}. {Steps[i].Description}\n";
+                recipeDetails += $"Step {i + 1}: {Steps[i].Description}\n";
             }
-            
+
+            recipeDetails += "=======================================\n";
 
             DisplayCalories(recipeDelegate);
             recipeDetails += calorieMessages.ToString();
@@ -97,7 +98,7 @@ namespace ST10251759_PROG6221_POE
         {
 
             totalCalories = CalculateTotalCalories();
-            recipeDelegate($"\nTotal number of calories in recipe: {totalCalories}\n");
+            recipeDelegate($"Total number of calories in recipe: {totalCalories}");
 
             if (totalCalories > 300)
             {

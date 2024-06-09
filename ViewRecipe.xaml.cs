@@ -32,7 +32,8 @@ namespace ST10251759_PROG6221_POE
 
         private void DisplayRecipeDetails()
         {
-            txtRecipeDetails.Text = currentRecipe.DisplayRecipe();
+            txtRecipeDetails.Document.Blocks.Clear();
+            txtRecipeDetails.AppendText(currentRecipe.DisplayRecipe());
         }
 
         private void MainMenuButton_Click(object sender, RoutedEventArgs e)
@@ -54,10 +55,12 @@ namespace ST10251759_PROG6221_POE
         {
             if (FactorComboBox.SelectedItem != null)
             {
+                txtRecipeDetails.Document.Blocks.Clear();
+
                 ComboBoxItem selectedItem = (ComboBoxItem)FactorComboBox.SelectedItem;
                 double factor = Convert.ToDouble(selectedItem.Content);
                 manageRecipe.ScaleRecipe(currentRecipe, factor);
-                txtRecipeDetails.Text = currentRecipe.DisplayRecipe();
+                txtRecipeDetails.AppendText(currentRecipe.DisplayRecipe());
 
                 //Hide the Scaling Components
                 lblScalingFactor.Visibility = Visibility.Hidden;
@@ -74,7 +77,8 @@ namespace ST10251759_PROG6221_POE
         private void ResetRecipeButton_Click(object sender, RoutedEventArgs e)
         {
             manageRecipe.ResetRecipe(currentRecipe);
-            txtRecipeDetails.Text = currentRecipe.DisplayRecipe();
+            txtRecipeDetails.Document.Blocks.Clear();
+            txtRecipeDetails.AppendText(currentRecipe.DisplayRecipe());
         }
 
         private void ClearRecipeButton_Click(object sender, RoutedEventArgs e)
