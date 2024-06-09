@@ -13,15 +13,15 @@
         <RichTextBox x:Name="txtRecipeDetails" HorizontalAlignment="Left" Margin="356,0,0,0" VerticalAlignment="Center" Height="370" Width="427" Background="Black" Foreground="#FFF36D0F" FontFamily="Bahnschrift Light SemiCondensed" FontSize="18"/>
         <Button x:Name="MainMenuButton" Content="Main Menu" HorizontalAlignment="Left" Margin="67,380,0,0" VerticalAlignment="Top" Height="45" Width="171" Click="MainMenuButton_Click" Background="#FFF17A15" FontFamily="Bahnschrift Condensed" FontSize="36" Foreground="White" BorderBrush="White"/>
         <Button x:Name="ScalingRecipeButton" Content="Scale" HorizontalAlignment="Left" Margin="67,45,0,0" VerticalAlignment="Top" Height="45" Width="171" Background="#FFF17A15" FontFamily="Bahnschrift Condensed" FontSize="36" Foreground="White" BorderBrush="White" Click="ScalingRecipeButton_Click"/>
-        <Button x:Name="ResetRecipeButton" Content="Reset" HorizontalAlignment="Left" Margin="67,163,0,0" VerticalAlignment="Top" Height="45" Width="171" Background="#FFF17A15" FontFamily="Bahnschrift Condensed" FontSize="36" Foreground="White" BorderBrush="White" Click="ResetRecipeButton_Click"/>
-        <Button x:Name="ClearRecipeButton" Content="Clear" HorizontalAlignment="Left" Margin="67,280,0,0" VerticalAlignment="Top" Height="45" Width="171" Background="#FFF17A15" FontFamily="Bahnschrift Condensed" FontSize="36" Foreground="White" BorderBrush="White" Click="ClearRecipeButton_Click"/>
-        <Label x:Name="lblScalingFactor" Content="Select Scaling Factor:" HorizontalAlignment="Left" Margin="67,103,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Bahnschrift SemiCondensed" Visibility="Hidden"/>
-        <ComboBox x:Name="FactorComboBox" HorizontalAlignment="Left" Margin="191,101,0,0" VerticalAlignment="Top" Width="56" FontFamily="Bahnschrift SemiCondensed" FontSize="16" Visibility="Hidden">
+        <Button x:Name="ResetRecipeButton" Content="Reset" HorizontalAlignment="Left" Margin="67,167,0,0" VerticalAlignment="Top" Height="45" Width="171" Background="#FFF17A15" FontFamily="Bahnschrift Condensed" FontSize="36" Foreground="White" BorderBrush="White" Click="ResetRecipeButton_Click"/>
+        <Button x:Name="ClearRecipeButton" Content="Clear" HorizontalAlignment="Left" Margin="67,272,0,0" VerticalAlignment="Top" Height="45" Width="171" Background="#FFF17A15" FontFamily="Bahnschrift Condensed" FontSize="36" Foreground="White" BorderBrush="White" Click="ClearRecipeButton_Click"/>
+        <Label x:Name="lblScalingFactor" Content="Select Scaling Factor:" HorizontalAlignment="Left" Margin="47,101,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Bahnschrift SemiCondensed" FontSize="15" Width="136" Visibility="Hidden"/>
+        <ComboBox x:Name="FactorComboBox" HorizontalAlignment="Left" Margin="188,102,0,0" VerticalAlignment="Top" Width="50" FontFamily="Bahnschrift SemiCondensed" FontSize="16" Visibility="Hidden">
             <ComboBoxItem Content="0.5"/>
             <ComboBoxItem Content="2"/>
             <ComboBoxItem Content="3"/>
         </ComboBox>
-        <Button x:Name="ProccedButton" Content="Procceed" HorizontalAlignment="Left" Margin="200,131,0,0" VerticalAlignment="Top" Background="#FF72F10C" FontFamily="Bahnschrift SemiCondensed" Click="ProccedButton_Click" Visibility="Hidden"/>
+        <Button x:Name="ProccedButton" Content="Procceed" HorizontalAlignment="Left" Margin="188,141,0,0" VerticalAlignment="Top" Background="#FF72F10C" FontFamily="Bahnschrift SemiCondensed" Click="ProccedButton_Click" FontSize="14" Visibility="Hidden"/>
 
     </Grid>
 </Window>
