@@ -8,10 +8,16 @@ using System.Threading.Tasks;
  Student Number: ST10251759
  Full Name: Cameron Chetty
  Course: PROG6221
- Assessment: POE Part 2
+ Assessment: POE Part 3
  Github Link for Part 1: https://github.com/VCDN-2024/prog6221-part-1-st10251759
  Github Link for Part 2: https://github.com/st10251759/prog6221-part-2-st10251759
+ Github Link for Part 3: https://github.com/st10251759/PROG6221-POE
  */
+
+/*
+=============Feedback==================== 
+I obtained 100% and reciped no iplemented feedback. All work done was to address the requirements of PART 2 ONLY, and there  NO FEEDBACK to implement for part 1.  
+*/
 
 /*
 =============Code Attribution====================
