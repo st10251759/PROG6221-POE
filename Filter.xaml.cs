@@ -61,6 +61,7 @@ namespace ST10251759_PROG6221_POE
         private int filter; //variable to hold the value of which catergory to filter by
         private ManageRecepie manageRecipe;
         private List<Recipe> recipes;
+        private List<Recipe> filteredRecipes; // New member variable to store filtered recipes
         //List to hold the FoodGroup Values
         private List<FoodGroup> groups = new List<FoodGroup>();
 
@@ -106,7 +107,7 @@ namespace ST10251759_PROG6221_POE
         private void NameFilter(string ingredientName)
         {//Namefilter method begin
             //Using the lambda expression to find if the recipe contains the name of the ingredient user entered display the filtered list of recipes
-            var filteredRecipes = recipes
+             filteredRecipes = recipes
         .Where(r => r.Ingredients.Any(i => i.Name.IndexOf(ingredientName, StringComparison.OrdinalIgnoreCase) >= 0))
         .ToList();
             DisplayRecipes(filteredRecipes);
@@ -116,7 +117,7 @@ namespace ST10251759_PROG6221_POE
         private void GroupFilter(FoodGroup selectedGroup)
         {//GroupFilter begin
          //Using the lambda expression to find if the recipe contains the food group of the ingredient user entered display the filtered list of recipes
-            var filteredRecipes = recipes
+             filteredRecipes = recipes
        .Where(r => r.Ingredients.Any(i => i.FoodGroup == selectedGroup))
        .ToList();
             DisplayRecipes(filteredRecipes);
@@ -126,7 +127,7 @@ namespace ST10251759_PROG6221_POE
         private void CalorieFilter(double maxCalories)
         {//CalorieFilter begin
             //Using the lambda expression to find if the recipe contains the max calories of the ingredient user entered display the filtered list of recipes
-            var filteredRecipes = recipes
+             filteredRecipes = recipes
                 .Where(r => r.CalculateTotalCalories() <= maxCalories)
                 .ToList();
             DisplayRecipes(filteredRecipes);
@@ -135,23 +136,55 @@ namespace ST10251759_PROG6221_POE
         //Method to display the filtered reiupe list 
         private void DisplayRecipes(List<Recipe> filteredRecipes)
         {//DisplayRecipes begin
-            foreach (var recipe in filteredRecipes)
-            {//for each to display all recipes in the recipe list begin
-                lbxRecipes.Items.Add($"{recipe.Name}\n{recipe.CalculateTotalCalories()} total calories");
-            }//for each end
+
+            //Clear listbox
+            lbxRecipes.Items.Clear();
+
+            //if statement to validate if there are no recipes found 
+            if (filteredRecipes.Count == 0)
+            {//if there are no results for filter begin
+                lbxRecipes.Items.Add("No recipes found.");
+            }//if there are no results for filter end
+            else
+            {//else if there are no results for filter begin
+                foreach (var recipe in filteredRecipes)
+                {//for each to display all recipes in the recipe list begin
+                    lbxRecipes.Items.Add($"{recipe.Name}\n{recipe.CalculateTotalCalories()} total calories");
+                }//for each end
+            }//else if there are no results for filter end
         }//DisplayRecipes end
 
         //Button to view the recipe the user selects
         private void ViewRecipeBtn_Click_1(object sender, RoutedEventArgs e)
         {//ViewRecipeButton begin
             int selectedIndex = lbxRecipes.SelectedIndex;
+
+            // Check if there are any recipes in the ListBox
+            if (lbxRecipes.Items.Count == 0 || (lbxRecipes.Items.Count > 0 && lbxRecipes.Items[0].ToString() == "No recipes found."))
+            {//if no recipes found begin
+                // Display a message if no recipes are found
+                MessageBox.Show("No recipes found to view. Please apply a different filter or add recipes.");
+                return;
+            }//if no recipes found end
+
             //if statement to valid if the user selected a recipe to view
             if (selectedIndex >= 0)
             {//if begin
-                //open ViewRecipeWindow and close the current window
-                var viewRecipeWindow = new ViewRecipe(recipes[selectedIndex], manageRecipe);
-                viewRecipeWindow.Show();
-                this.Hide();
+                // Get the selected recipe from the filtered list
+                var selectedRecipe = filteredRecipes[selectedIndex];
+
+                if (selectedRecipe != null)
+                {
+                    // Open ViewRecipeWindow and close the current window
+                    var viewRecipeWindow = new ViewRecipe(selectedRecipe, manageRecipe);
+                    viewRecipeWindow.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    // Display error message if the recipe is not found in the filtered list
+                    MessageBox.Show("Selected recipe not found in the filtered list.");
+                }
             }//if end
             else
             {//else begin
