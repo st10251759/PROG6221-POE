@@ -91,12 +91,4 @@ By the end of this project, I have mastered the knowlegde related to:
 - Implement graphics rendering services to display graphical views of data.
 - Apply styles in a user interface.
 
-### Future Development Goals
-In the final phase of this project, you will update the application to include a graphical user interface (GUI) using either WPF or UWP. All functionalities from the command-line application must be preserved and presented in a more user-friendly way. Additionally, one of the following features should be added:
-1. Filter recipes by:
-   - Ingredient name,
-   - Food group, or
-   - Maximum calories.
-2. Create a menu with multiple recipes and display a pie chart showing the percentage of each food group in the total menu.
-
 Thank you for your interest and contributions to the Recipe Management Console Application!
