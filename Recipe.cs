@@ -5,10 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ST10251759_PROG6221_POE
-{
+{//namespace end
+    //delegate  for calories
     public delegate void RecipeDelegate(string message);
     public class Recipe
-    {
+    {//Recipe Class begin
+        //variable declaration
         public string Name { get; set; }
         public int NumIngredients { get; set; }
         public int NumSteps { get; set; }
@@ -18,6 +20,7 @@ namespace ST10251759_PROG6221_POE
         private double totalCalories;
         private StringBuilder calorieMessages;
 
+        //constructor
         public Recipe()
         {
             Ingredients = new List<Ingredient>();
@@ -25,6 +28,7 @@ namespace ST10251759_PROG6221_POE
             calorieMessages = new StringBuilder();
         }
 
+        //construcotr with parameters
         public Recipe(string name, int numIngredients, int numSteps)
         {
             Name = name;
@@ -34,27 +38,29 @@ namespace ST10251759_PROG6221_POE
             Steps = new List<Step>();
             calorieMessages = new StringBuilder();
         }
-
+        //Method to add ingreients to ingredient list instance of ingredient class
         public void AddIngredient(Ingredient ingredient)
         {
             Ingredients.Add(ingredient);
         }
-
+        //Method to add step to step list instance of step class
         public void AddStep(Step step)
         {
             Steps.Add(step);
         }
 
+        //method to alter the ingreients in ingredient list
         public void SetIngredients(List<Ingredient> ingredients)
         {
             Ingredients = ingredients;
         }
 
+        //method to alter steps in step list
         public void SetSteps(List<Step> steps)
         {
             Steps = steps;
         }
-
+        //method to calulate the total calories for all ingreidnts in the recipe i.e. total recipe calories
         public double CalculateTotalCalories()
         {
             double totalCalories = 0;
@@ -65,11 +71,12 @@ namespace ST10251759_PROG6221_POE
             return totalCalories;
         }
 
+        //method to display calorie message
         private void DisplayCalorieMessage(string message)
         {
             calorieMessages.AppendLine(message);
         }
-
+        //Method to display the recipe details in a neat and structured way
         public string DisplayRecipe()
         {
             calorieMessages.Clear();
@@ -93,17 +100,19 @@ namespace ST10251759_PROG6221_POE
             recipeDetails += calorieMessages.ToString();
             return recipeDetails;
         }
-
+        //display calories and delegate if calories exceed 300
         private void DisplayCalories(RecipeDelegate recipeDelegate)
         {
 
             totalCalories = CalculateTotalCalories();
             recipeDelegate($"Total number of calories in recipe: {totalCalories}");
 
+            //if exceed 300 notify user
             if (totalCalories > 300)
             {
                 recipeDelegate("CALORIES EXCEED 300");
             }
+            //display inforbased on total calories on nutrional value
 
             if (totalCalories > 0 && totalCalories <= 200)
             {
@@ -122,7 +131,7 @@ namespace ST10251759_PROG6221_POE
                 recipeDelegate("This meal is considered a HIGH CALORIE MEAL, containing a large amount of calories, and should not be consumed frequently");
             }
         }
-
+        //method to scale the recipe
         public void ScaleRecipe(double factor)
         {
             foreach (var ingredient in Ingredients)
@@ -150,7 +159,7 @@ namespace ST10251759_PROG6221_POE
                 }
             }
         }
-
+        //method to change the unit of cups
         private void ConvertCups(Ingredient ingredient, double newQuantity)
         {
             if (newQuantity < 1)
@@ -171,6 +180,7 @@ namespace ST10251759_PROG6221_POE
             }
         }
 
+        //method to change the unit of tablespoons
         private void ConvertTablespoons(Ingredient ingredient, double newQuantity)
         {
             if (newQuantity >= 16)
@@ -208,6 +218,7 @@ namespace ST10251759_PROG6221_POE
             }
         }
 
+        //method is to change the unit of teaspoons
         private void ConvertTeaspoons(Ingredient ingredient, double newQuantity)
         {
             if (newQuantity >= 3)
@@ -236,6 +247,7 @@ namespace ST10251759_PROG6221_POE
             }
         }
 
+        //method to rest recipe back to its orginal state
         public void ResetRecipe()
         {
             foreach (var ingredient in Ingredients)
@@ -248,4 +260,4 @@ namespace ST10251759_PROG6221_POE
             totalCalories = CalculateTotalCalories();
         }
     }
-}
+}//namespace end
